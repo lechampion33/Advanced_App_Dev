@@ -19,7 +19,7 @@ const App = () => {
        <Route path='/register' element={<Register/>}/>
        <Route path='/nav' element={<Navbar/>}/>
        </Route>
-    </Routes>
+       </Routes>
     </Suspense>
   </BrowserRouter>
 </>
