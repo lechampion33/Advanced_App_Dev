@@ -1,39 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { AiOutlineQuestionCircle, AiOutlineMail } from 'react-icons/ai';
 
 function Navbar() {
-    const links=[
-        {
-            name:'Home',
-            path:'/'
-        },
-        {
-            name:'Contact',
-            path:'/contact'
-        },
-        {
-            name:'Login',
-            path:'/login'
-        }
-    ]
   return (
-    <>
-  <div className='h-[10vh] flex flex-row justify-center bg-blue-800 text-slate-50'>
-    <div className='w-[80%] h-full flex flex-row justify-between items-center'>
-        <div className='w-[100vh]'>
-         <h2 className='font-mono font-semibold text-2xl'>COURSE COMPASS</h2>
-        </div>
-        <div className='w-1/4 flex flex-row justify-between font-medium text-xl'>  
-        {links.map((link,index)=>(
-          <NavLink key={index} to={link.path} className='cursor-pointer'>
-            {link.name}
-          </NavLink>
-          ))
-        }
-        </div>
+    <div className='p-0.5 w-full flex flex-row bg-blue-800 text-slate-50 shadow-2xl'>
+      <div className='w-2/5 font-mono font-semibold text-3xl p-5'>COURSE COMPASS</div>
+      <div className='w-3/5 flex font-sans font-medium text-xl p-5 justify-end gap-10 '>
+        <NavLink className="flex items-center gap-2 "><AiOutlineQuestionCircle size={20}/>Help</NavLink>
+        <NavLink to="/contact" className="flex items-center gap-2"><AiOutlineMail size={20}/>Contact Us</NavLink>
+      </div>
     </div>
-  </div>
-    </>
   )
 }
 

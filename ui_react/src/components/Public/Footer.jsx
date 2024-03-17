@@ -3,7 +3,7 @@ import {SocialIcon} from "react-social-icons"
 
 function Footer() {
   return (
-    <div className='h-[10vh] flex flex-row justify-between items-center bg-blue-800 text-slate-50 p-10'>
+    <div className='h-[10vh] flex flex-row justify-between items-center bg-black text-slate-50 p-10 '>
       <div className='font-semibold'>
         <p>&copy;1992 Switchblade. All Rights Reserved</p>
       </div>
