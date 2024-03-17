@@ -4,7 +4,7 @@ import { AiOutlineCompass, AiOutlineMail, AiOutlineLogin } from 'react-icons/ai'
 
 function Navbar2() {
   return (
-    <div className='p-0.5 w-full flex flex-row bg-white text-black shadow-2xl'>
+    <div className='p-0.5 w-full flex flex-row bg-white text-black shadow-2xl rounded-3xl'>
       <div className='w-2/5 font-mono font-semibold text-3xl p-5'>COURSE COMPASS</div>
       <div className='w-3/5 flex font-sans font-medium text-xl p-5 justify-end gap-10 '>
         <NavLink to="/" className="flex items-center gap-2 ">

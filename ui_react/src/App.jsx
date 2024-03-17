@@ -10,8 +10,6 @@ import Forgot from './pages/Auth/Forgot'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MainLayout from './layouts/MainLayout'
-import UserDashLayout from './layouts/UserLayout/UserDashLayout'
-import UserDash from './pages/User/UserDash'
 const App = () => {
   const toastStyle = {
     background: '#333', 
@@ -34,9 +32,6 @@ const App = () => {
        </Route>
        <Route element={<MainLayout/>}>
        <Route path='/' element={<Home/>}/>
-       </Route>
-       <Route element={<UserDashLayout/>}>
-       <Route path='/userdash' element={<UserDash/>}/>
        </Route>
        </Routes>
     </Suspense>

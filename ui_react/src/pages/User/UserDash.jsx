@@ -2,9 +2,9 @@ import React from 'react'
 
 function UserDash() {
   return (
-    <div className='w-4/5 flex flex-row'>
-    hello
-  </div>
+    <div className='bg-black w-screen h-screen'>
+      hello
+    </div>
   )
 }
 
