@@ -111,9 +111,67 @@ function Home() {
          </div>
        </div>
       </div>
-      <div className=''>
-        
+      <div className='flex flex-row'>
+      <div className='flex flex-col font-sans'> 
+        <h2 className='justify-center items-center flex text-3xl font-bold'>Why Join Course Compass</h2>
+        <div className='flex flex-row gap-10 px-40 py-20'>
+        <div className="flex justify-center items-center w-[20vh] h-[20vh]">
+      <lord-icon
+        src="https://cdn.lordicon.com/kthelypq.json"
+        trigger="hover"
+        class="w-[20vh] h-[20vh] text-blue-500 hover:text-blue-700"
+      ></lord-icon>
+    </div>
+        <div className='flex flex-col w-[50%] gap-5'>
+          <h2 className='flex font-mono font-bold text-2xl'>
+            Personalized
+          </h2>
+            <p className='w-[80%]'>Get customized class recommendations based on your interests.</p>
+       </div>
+       <div className="flex justify-center items-center w-[20vh] h-[20vh]">
+      <lord-icon
+        src="https://cdn.lordicon.com/zyzoecaw.json"
+        trigger="hover"
+        class="w-[20vh] h-[20vh] text-blue-500 hover:text-blue-700"
+      ></lord-icon>
+    </div>
+          <div className='flex flex-col w-[50%] gap-3'>
+          <h2 className='flex font-mono font-bold text-2xl'>
+          Thousands of Classes
+          </h2>
+            <p className='w-[80%]'>Build a portfolio of projects that showcases your skills.</p>
+          </div>
+          </div>
+        <div className='flex flex-row gap-10 px-40 py-5'>
+               <div className="flex justify-center items-center w-[20vh] h-[20vh]">
+                   <lord-icon
+                   src="https://cdn.lordicon.com/rbbnmpcf.json"
+                       trigger="hover"
+                  class="w-[20vh] h-[20vh] text-blue-500 hover:text-blue-700"
+                   ></lord-icon>
+                </div>
+          <div className='flex flex-col w-[50%] gap-5'>
+               <h2 className='flex font-mono font-bold text-2xl'>
+               On-Demand
+                </h2>
+             <p className='w-[80%]'>Watch bite-sized classes on your own schedule, anytime, anywhere on desktop or mobile app.</p>
+          </div>
+          <div className="flex justify-center items-center w-[20vh] h-[20vh]">
+                   <lord-icon
+                   src="https://cdn.lordicon.com/fdxqrdfe.json"
+                       trigger="hover"
+                  class="w-[20vh] h-[20vh] text-blue-500 hover:text-blue-700"
+                   ></lord-icon>
+                </div>
+          <div className='flex flex-col w-[50%] gap-5'>
+               <h2 className='flex font-mono font-bold text-2xl'>
+               Online Community
+                </h2>
+             <p className='w-[80%]'>Ask questions, exchange feedback, and learn alongside other students.</p>
+          </div>
+       </div>
       </div>
+    </div>
     </div>
   );
 }
