@@ -13,6 +13,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import MainLayout from './layouts/MainLayout'
 import UserDashLayout from './layouts/UserLayout/UserDashLayout'
 import UserCourses from './pages/User/UserCourses.jsx'
+import UserFavs from './pages/User/UserFavs.jsx'
+import UserSub from './pages/User/UserSub.jsx'
 const App = () => {
   const toastStyle = {
     background: '#333', 
@@ -39,6 +41,8 @@ const App = () => {
        <Route element={<UserDashLayout/>}>
        <Route path='/userdash' element={<UserDash/>}/>
        <Route path='/usercourse' element={<UserCourses/>}/>
+       <Route path='/favs' element={<UserFavs/>}/>
+       <Route path='/sub' element={<UserSub/>}/>
        </Route>
        </Routes>
     </Suspense>
