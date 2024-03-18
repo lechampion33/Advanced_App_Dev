@@ -15,6 +15,7 @@ import UserDashLayout from './layouts/UserLayout/UserDashLayout'
 import UserCourses from './pages/User/UserCourses.jsx'
 import UserFavs from './pages/User/UserFavs.jsx'
 import UserSub from './pages/User/UserSub.jsx'
+import AdminDashLayout from './layouts/AdminLayout/AdminDashLayout.jsx'
 const App = () => {
   const toastStyle = {
     background: '#333', 
@@ -43,6 +44,9 @@ const App = () => {
        <Route path='/usercourse' element={<UserCourses/>}/>
        <Route path='/favs' element={<UserFavs/>}/>
        <Route path='/sub' element={<UserSub/>}/>
+       </Route>
+       <Route element={<AdminDashLayout/>}>
+       <Route path='/admindash' element={<AdminDash/>}/>
        </Route>
        </Routes>
     </Suspense>
