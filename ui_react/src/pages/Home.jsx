@@ -1,5 +1,5 @@
 import React from 'react';
-import hom from '../assets/img/homeimg.png';
+import hom from '../assets/img/home3img.png';
 import { AiOutlinePlayCircle } from 'react-icons/ai';
 import { AiFillFire } from 'react-icons/ai';
 import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
@@ -9,14 +9,19 @@ import Cisco from '../assets/img/cisco.jpg'
 import Write from '../assets/img/write.jpg'
 import ICT from '../assets/img/ict.jpg'
 import JS from '../assets/img/js.jpg'
+import { useNavigate } from 'react-router-dom';
 function Home() {
+  const navigate=useNavigate()
+  const handleStart = () => {
+    navigate('/register')
+}
   return (
     <div className=''>
     <div className="flex flex-row items-center  pt-10  font-mono pb-3">
       <div className="flex flex-col ml-4 w-[50%] p-5 gap-4">
         <h2 className='font-sans font-bold text-4xl'>Subscribe to the best of Course Compass</h2>
         <p className="fade-in">With Personal Plan, you get access to 8,000 of our top-rated courses in tech, business, and more.</p>
-        <button className="flex items-center px-4 font-mono py-2 mt-4 bg-blue-800 text-white rounded-md w-[30%]">
+        <button onClick={handleStart} className="flex  items-center px-4 font-mono py-2 mt-4 bg-blue-800 text-white rounded-md w-[30%] ">
           <AiOutlinePlayCircle size={20} className="mr-2" />
           Get Started
         </button>

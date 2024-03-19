@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import {SocialIcon} from "react-social-icons"
 
 function Footer() {
@@ -8,9 +9,9 @@ function Footer() {
         <p>&copy;1992 Switchblade. All Rights Reserved</p>
       </div>
       <div className='flex flex-row space-x-10 font-mono font-semibold'> 
-      <p>Terms And Conditions</p>
-      <p>Privacy Policy</p>
-      <p>Help</p>
+      <NavLink to='/terms'>Terms And Conditions</NavLink>
+      <NavLink to='/policy'>Privacy Policy</NavLink>
+      <NavLink to='/help'>FAQ</NavLink>
       </div>
       <div className="flex space-x-4 ">
       <SocialIcon url="www.twitter.com" style={{height:'40px',width:'40px'}} />

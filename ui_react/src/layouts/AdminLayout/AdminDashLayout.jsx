@@ -3,7 +3,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import AdminSide from '../../components/Admin/AdminSide'
 import AdminTop from '../../components/Admin/AdminTop'
-function UserDashLayout() {
+function AdminDashLayout() {
   return (
     <div className='m-0 p-0 flex flex-row h-[100vh] w-[100vw] overflow-x-hidden'>
     <AdminSide/>
@@ -17,4 +17,4 @@ function UserDashLayout() {
   )
 }
 
-export default UserDashLayout
+export default AdminDashLayout

@@ -39,7 +39,7 @@ function UserDash() {
           <h2 className="font-sans text-xl font-semibold text-black">Add information About Yourself</h2>
           <form onSubmit={handleSubmit} className="mt-4 w-[60%]">
             <div className="mb-4 ">
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">User Name</label>
               <input
                 type="text"
                 id="name"
@@ -51,9 +51,9 @@ function UserDash() {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">Age</label>
               <input
-                type="email"
+                type="text"
                 id="email"
                 name="email"
                 value={formData.email}

@@ -15,7 +15,16 @@ import UserDashLayout from './layouts/UserLayout/UserDashLayout'
 import UserCourses from './pages/User/UserCourses.jsx'
 import UserFavs from './pages/User/UserFavs.jsx'
 import UserSub from './pages/User/UserSub.jsx'
-import AdminDashLayout from './layouts/AdminLayout/AdminDashLayout.jsx'
+import AdminDashLayout from './layouts/AdminLayout/AdminDashLayout'
+import AdminDash from './pages/Admin/AdminDash.jsx'
+import AdminBoard from './pages/Admin/AdminBoard.jsx'
+import AdminCourses from './pages/Admin/AdminCourses.jsx'
+import AdminPayment from './pages/Admin/AdminPayment.jsx'
+import AdminMails from './pages/Admin/AdminMails.jsx'
+import TermsLayout from './layouts/TermsLayout.jsx'
+import Terms from './pages/Terms.jsx'
+import Policy from './pages/Policy.jsx'
+import Help from './pages/Help.jsx'
 const App = () => {
   const toastStyle = {
     background: '#333', 
@@ -39,6 +48,11 @@ const App = () => {
        <Route element={<MainLayout/>}>
        <Route path='/' element={<Home/>}/>
        </Route>
+       <Route element={<TermsLayout/>}>
+       <Route path='/terms' element={<Terms/>}/>
+       <Route path='/policy' element={<Policy/>}/>
+       <Route path='/help' element={<Help/>}/>
+       </Route>
        <Route element={<UserDashLayout/>}>
        <Route path='/userdash' element={<UserDash/>}/>
        <Route path='/usercourse' element={<UserCourses/>}/>
@@ -46,7 +60,11 @@ const App = () => {
        <Route path='/sub' element={<UserSub/>}/>
        </Route>
        <Route element={<AdminDashLayout/>}>
-       <Route path='/admindash' element={<AdminDash/>}/>
+       <Route path='/users' element={<AdminDash/>}/>
+       <Route path='/board' element={<AdminBoard/>}/>
+       <Route path='/adminc' element={<AdminCourses/>}/>
+       <Route path='/adminpayment' element={<AdminPayment/>}/>
+       <Route path='/adminmails' element={<AdminMails/>}/>
        </Route>
        </Routes>
     </Suspense>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 import { AiOutlineLogin } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate=useNavigate();
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
@@ -20,9 +20,11 @@ function Login() {
     if (!username || !password) {
       toast.error('Please enter both username and password.');
     } else {
-      console.log("Username:", username);
-      console.log("Password:", password);
-      toast.success('Login successful!');
+      if (username === 'admin' && password === 'admin') {
+        navigate('/users'); 
+      } else {
+        navigate('/userdash'); 
+      } 
     }
   };
 

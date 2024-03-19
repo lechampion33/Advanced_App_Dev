@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,7 +8,7 @@ function Register() {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate=useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!fullName || !email || !password) {
@@ -19,6 +19,7 @@ function Register() {
       toast.error('Password must be at least 8 characters long.');
     } else {
       toast.success('Registration successful!');
+      navigate('/userdash'); 
     }
   };
 

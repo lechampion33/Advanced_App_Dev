@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 import { AiOutlineReload } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Forgot() {
   const [email, setEmail] = useState('');
-
+  const navigate=useNavigate();
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -17,6 +17,7 @@ function Forgot() {
     } else {
       console.log("Email:", email);
       toast.success('Password reset email sent successfully!');
+      navigate('/login')
     }
   };
 
