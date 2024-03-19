@@ -76,7 +76,7 @@ function Register() {
           </button>
         </div>
         <div className='ml-2'>
-          By signing up, you agree to our <Link to="/" className="text-amber-400 hover:underline font-semibold"> Policy</Link>
+          By signing up, you agree to our <Link to="/policy" className="text-amber-400 hover:underline font-semibold"> Policy</Link>
         </div>
         <div className='border-2 border-dashed border-amber-300 mt-5'></div>
         <div className='mt-9 ml-5'>

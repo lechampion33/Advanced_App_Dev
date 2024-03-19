@@ -7,7 +7,7 @@ function Navbar2() {
     <div className='p-0.5 w-full flex flex-row bg-white text-black shadow-2xl rounded-3xl'>
       <div className='w-2/5 font-mono font-semibold text-3xl p-5'>COURSE COMPASS</div>
       <div className='w-3/5 flex font-sans font-medium text-xl p-5 justify-end gap-10 '>
-        <NavLink to="/" className="flex items-center gap-2 ">
+        <NavLink to="/explore" className="flex items-center gap-2 ">
           <AiOutlineCompass size={20} /> Explore
         </NavLink>
         <NavLink to="/contact" className="flex items-center gap-2">

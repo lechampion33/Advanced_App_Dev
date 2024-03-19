@@ -25,6 +25,8 @@ import TermsLayout from './layouts/TermsLayout.jsx'
 import Terms from './pages/Terms.jsx'
 import Policy from './pages/Policy.jsx'
 import Help from './pages/Help.jsx'
+import Explore from './pages/Explore.jsx'
+import ExploreLayout from './layouts/ExploreLayout.jsx'
 const App = () => {
   const toastStyle = {
     background: '#333', 
@@ -40,7 +42,6 @@ const App = () => {
   <Suspense fallback={<Loader/>}>
     <Routes>
       <Route element={<WebLayout/>}>
-       <Route path='/contact' element={<Contact/>}/>
        <Route path='/login' element={<Login/>}/>
        <Route path='/register' element={<Register/>}/>
        <Route path='/forgot' element={<Forgot/>}/>
@@ -48,8 +49,12 @@ const App = () => {
        <Route element={<MainLayout/>}>
        <Route path='/' element={<Home/>}/>
        </Route>
+       <Route element={<ExploreLayout/>}>
+       <Route path='/explore' element={<Explore/>}/>
+       </Route>
        <Route element={<TermsLayout/>}>
        <Route path='/terms' element={<Terms/>}/>
+       <Route path='/contact' element={<Contact/>}/>
        <Route path='/policy' element={<Policy/>}/>
        <Route path='/help' element={<Help/>}/>
        </Route>
