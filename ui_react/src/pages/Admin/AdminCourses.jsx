@@ -2,48 +2,54 @@ import React, { useState } from 'react';
 
 function AdminCourses() {
     const [courses, setCourses] = useState([
-      { id: 1, name: 'Course 1', category: 'Category 1', author: 'Author 1' },
-      { id: 2, name: 'Course 2', category: 'Category 2', author: 'Author 2' },
-      { id: 3, name: 'Course 3', category: 'Category 3', author: 'Author 3' },
+      { id: 1, name: 'Introduction to Computer Science', category: 'Computer Science', author: 'John Smith' },
+      { id: 2, name: 'Artificial Intelligence Fundamentals', category: 'Artificial Intelligence', author: 'Emily Johnson' },
+      { id: 3, name: 'Web Development Basics', category: 'Web Development', author: 'David Brown' },
     ]);
+    const [showAddModal, setShowAddModal] = useState(false);
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
+    const [selectedCourse, setSelectedCourse] = useState(null);
+    const [updateName, setUpdateName] = useState('');
+    const [updateCategory, setUpdateCategory] = useState('');
+    const [updateAuthor, setUpdateAuthor] = useState('');
   
-    const updateCourse = (id) => {
-      const newName = prompt('Enter new course name:');
-      const newCategory = prompt('Enter new category:');
-      const newAuthor = prompt('Enter new author:');
-  
-      const updatedCourses = courses.map(course => {
-        if (course.id === id) {
-          return {
-            ...course,
-            name: newName || course.name,
-            category: newCategory || course.category,
-            author: newAuthor || course.author
-          };
-        }
-        return course;
-      });
-  
-      setCourses(updatedCourses);
+    const openAddModal = () => {
+      setShowAddModal(true);
     };
   
-    const deleteCourse = (id) => {
-      if (window.confirm('Are you sure you want to delete this course?')) {
-        const updatedCourses = courses.filter(course => course.id !== id);
-        setCourses(updatedCourses);
-      }
+    const closeAddModal = () => {
+      setShowAddModal(false);
+    };
+    
+    const openUpdateModal = (course) => {
+      setSelectedCourse(course);
+      setUpdateName(course.name);
+      setUpdateCategory(course.category);
+      setUpdateAuthor(course.author);
+      setShowUpdateModal(true);
     };
   
+    const closeUpdateModal = () => {
+      setSelectedCourse(null);
+      setShowUpdateModal(false);
+    };
     const addCourse = () => {
-      const id = Math.max(...courses.map(course => course.id)) + 1;
-      const name = prompt('Enter course name:');
-      const category = prompt('Enter category:');
-      const author = prompt('Enter author:');
-  
-      if (name && category && author) {
-        const newCourse = { id, name, category, author };
+      if (updateName && updateCategory && updateAuthor) {
+        const id = Math.max(...courses.map(course => course.id)) + 1;
+        const newCourse = { id, name: updateName, category: updateCategory, author: updateAuthor };
         setCourses([...courses, newCourse]);
+        closeAddModal();
       }
+    };
+    
+    
+  
+    const updateCourse = () => {
+      const updatedCourses = courses.map(course =>
+        course.id === selectedCourse.id ? { ...course, name: updateName, category: updateCategory, author: updateAuthor } : course
+      );
+      setCourses(updatedCourses);
+      closeUpdateModal();
     };
   
     return (
@@ -69,7 +75,7 @@ function AdminCourses() {
                 <td className="border p-1 border-gray-600">
                   <button
                     className="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => updateCourse(course.id)}
+                    onClick={() => openUpdateModal(course)}
                   >
                     Update
                   </button>
@@ -84,9 +90,97 @@ function AdminCourses() {
             ))}
           </tbody>
         </table>
-        <button className="bg-black mt-5 text-white font-bold py-5 px-6 rounded my-4 mx-10 w-[20%]" onClick={addCourse}>Add Course</button>
+        <button className="bg-black mt-5 text-white font-bold py-5 px-6 rounded my-4 mx-10 w-[20%]" onClick={openAddModal}>Add Course</button>
+
+        {showAddModal && (
+          <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-gray-800 bg-opacity-75">
+            <div className="bg-white p-8 rounded">
+              <h2 className="text-2xl mb-4">Add Course</h2>
+              <form>
+  <label htmlFor="name" className="mb-2">Name:</label>
+  <input
+    type="text"
+    id="name"
+    name="name"
+    value={updateName}
+    onChange={(e) => setUpdateName(e.target.value)}
+    className="border p-2 mb-4"
+  />
+
+  <label htmlFor="category" className="mb-2">Category:</label>
+  <input
+    type="text"
+    id="category"
+    name="category"
+    value={updateCategory}
+    onChange={(e) => setUpdateCategory(e.target.value)}
+    className="border p-2 mb-4"
+  />
+
+  <label htmlFor="author" className="mb-2">Author:</label>
+  <input
+    type="text"
+    id="author"
+    name="author"
+    value={updateAuthor}
+    onChange={(e) => setUpdateAuthor(e.target.value)}
+    className="border p-2 mb-4"
+  />
+
+  <div className="flex justify-end">
+    <button type="button" className="bg-blue-500 text-white py-2 px-4 rounded mr-2" onClick={closeAddModal}>Cancel</button>
+    <button type="button" className="bg-green-500 text-white py-2 px-4 rounded" onClick={addCourse}>Add</button>
+  </div>
+</form>
+            </div>
+          </div>
+        )}
+
+        {showUpdateModal && (
+          <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-gray-800 bg-opacity-75">
+            <div className="bg-white p-8 rounded">
+              <h2>Update Course</h2>
+              <form onSubmit={(e) => { e.preventDefault(); }}>
+                <label htmlFor="updateName" className="mb-2">Name:</label>
+                <input
+                  type="text"
+                  id="updateName"
+                  name="updateName"
+                  value={updateName}
+                  onChange={(e) => setUpdateName(e.target.value)}
+                  className="border p-2 mb-4"
+                />
+
+                <label htmlFor="updateCategory" className="mb-2">Category:</label>
+                <input
+                  type="text"
+                  id="updateCategory"
+                  name="updateCategory"
+                  value={updateCategory}
+                  onChange={(e) => setUpdateCategory(e.target.value)}
+                  className="border p-2 mb-4"
+                />
+
+                <label htmlFor="updateAuthor" className="mb-2">Author:</label>
+                <input
+                  type="text"
+                  id="updateAuthor"
+                  name="updateAuthor"
+                  value={updateAuthor}
+                  onChange={(e) => setUpdateAuthor(e.target.value)}
+                  className="border p-2 mb-4"
+                />
+
+                <div className="flex justify-end">
+                  <button type="button" className="bg-blue-500 text-white py-2 px-4 rounded mr-2" onClick={closeUpdateModal}>Cancel</button>
+                  <button type="button" className="bg-green-500 text-white py-2 px-4 rounded" onClick={updateCourse}>Save</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
-  )
+    )
 }
 
-export default AdminCourses
+export default AdminCourses;

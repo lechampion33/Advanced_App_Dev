@@ -8,7 +8,18 @@ function UserDash() {
     country: '',
     mobile: ''
   });
+  const [previewSource, setPreviewSource] = useState(Profile); // Assuming Profile is the default image source
 
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      setPreviewSource(reader.result);
+    };
+
+    reader.readAsDataURL(file);
+  };
   const [submitted, setSubmitted] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,9 +40,24 @@ function UserDash() {
       </div>
       <div className='flex flex-row'>
       <div className='w-[40%] p-10 flex flex-col'>
-            <img src={Profile} alt="Your Image" className="w-[70%] h-[70%] border-b-2  border-gray-300" />
-             <h2 className="text-xl font-semibold mt-4 flex  p-4 cursor-pointer bg-blue-800 w-[70%] text-white rounded-md">Update Your Profile Picture</h2>
-      </div>
+      <input
+        type="file"
+        id="imageUpload"
+        accept="image/*"
+        className="hidden"
+        onChange={handleFileInputChange}
+      />
+      <label htmlFor="imageUpload" className="cursor-pointer">
+        <img
+          src={previewSource}
+          alt="Your Image"
+          className="w-[70%] h-[70%] border-b-2 border-gray-300"
+        />
+        <h2 className="text-xl font-semibold mt-4 flex p-4 cursor-pointer bg-blue-800 w-[70%] text-white rounded-md">
+          Update Your Profile Picture
+        </h2>
+      </label>
+    </div>
         <div className='w-[60%]'>
         <div className="flex flex-col">
       {!submitted ? (

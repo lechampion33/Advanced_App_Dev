@@ -9,7 +9,7 @@ function Terms() {
         </div>
         <div className="border-t border-gray-200 px-4 py-5 sm:p-6">
           <p className="text-base text-gray-700">
-            Welcome to Course Hunt, an e-learning portal where you can access a wide range of courses
+            Welcome to Course Compass, an e-learning portal where you can access a wide range of courses
             conveniently from anywhere. By using our website, you agree to comply with and be bound by the following
             terms and conditions. Please read these terms carefully before accessing or using our website.
           </p>

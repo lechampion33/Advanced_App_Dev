@@ -27,6 +27,7 @@ import Policy from './pages/Policy.jsx'
 import Help from './pages/Help.jsx'
 import Explore from './pages/Explore.jsx'
 import ExploreLayout from './layouts/ExploreLayout.jsx'
+import NotFound from './pages/NotFound.jsx'
 const App = () => {
   const toastStyle = {
     background: '#333', 
@@ -41,6 +42,7 @@ const App = () => {
       />
   <Suspense fallback={<Loader/>}>
     <Routes>
+      
       <Route element={<WebLayout/>}>
        <Route path='/login' element={<Login/>}/>
        <Route path='/register' element={<Register/>}/>

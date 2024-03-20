@@ -9,7 +9,7 @@ function Policy() {
         </div>
         <div className="border-t border-gray-200 px-4 py-5 sm:p-6">
           <p className="text-base text-gray-700">
-            At Course Hunt, we value the privacy of our visitors and users. This Privacy Policy outlines the
+            At Course Compass, we value the privacy of our visitors and users. This Privacy Policy outlines the
             types of personal information we collect and how it is used.
           </p>
           <p className="mt-4 text-base text-gray-700">

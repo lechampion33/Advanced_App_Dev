@@ -19,7 +19,7 @@ function Register() {
       toast.error('Password must be at least 8 characters long.');
     } else {
       toast.success('Registration successful!');
-      navigate('/userdash'); 
+      navigate('/login'); 
     }
   };
 
