@@ -1,0 +1,12 @@
+@font-face {
+    font-family:'customfont1' ;
+    src: url("../../../public/customfont/AvenirLTStd-Black.otf");
+  }
+  @font-face {
+    font-family:'customfont2' ;
+    src: url("../../../public/customfont/AvenirLTStd-Book.otf");
+  }
+  @font-face {
+    font-family:'customfont3' ;
+    src: url("../../../public/customfont/AvenirLTStd-Roman.otf");
+  }

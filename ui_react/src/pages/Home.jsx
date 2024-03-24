@@ -106,7 +106,7 @@ function Home() {
               ></lord-icon>
             </div>
             <div className='flex flex-col w-[50%] gap-5'>
-              <h2 className='flex font-mono font-bold text-2xl'>
+              <h2 className='flex customfont2 font-bold text-2xl'>
                 On-Demand
               </h2>
               <p className='w-[80%]'>Watch bite-sized classes on your own schedule, anytime, anywhere on desktop or mobile app.</p>
