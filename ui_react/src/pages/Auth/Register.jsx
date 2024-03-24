@@ -8,10 +8,13 @@ function Register() {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate=useNavigate();
+  const [agreed, setAgreed] = useState(false); 
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!fullName || !email || !password) {
+    if (!agreed) { 
+      toast.error('Please agree to the Privacy Policy.');
+    } else if (!fullName || !email || !password) {
       toast.error('Please fill in all fields.');
     } else if (!email.includes('@gmail.com')) {
       toast.error('Please enter a valid Gmail address.');
@@ -22,6 +25,7 @@ function Register() {
       navigate('/login'); 
     }
   };
+
 
   return (
     <div className='flex flex-col items-center h-screen'>
@@ -69,16 +73,22 @@ function Register() {
             Password
           </label>
         </div>
+        <div className="flex items-center mt-5">
+          <input
+            type="checkbox"
+            checked={agreed}
+            onChange={(e) => setAgreed(e.target.checked)}
+            className="form-checkbox h-5 w-5 text-indigo-600 transition duration-150 ease-in-out rounded border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <span className="ml-2 text-sm text-gray-700">I agree to the <Link to="/policy" className="text-red-500 hover:underline font-semibold">Privacy Policy</Link></span>
+        </div>
         <div className="relative w-full min-w-[300px] h-20 mt-10">
           <button onClick={handleSubmit} className='w-full h-18 bg-blue-800 rounded p-3 text-white flex items-center justify-center'>
             <AiOutlineUserAdd size={20} />
             <span className="ml-2 font-mono font-semibold text-xl">Sign Up</span>
           </button>
         </div>
-        <div className='ml-2'>
-          By signing up, you agree to our <Link to="/policy" className="text-amber-400 hover:underline font-semibold"> Policy</Link>
-        </div>
-        <div className='border-2 border-dashed border-amber-300 mt-5'></div>
+        <div className='border-2 border-dashed border-amber-300 mt-2'></div>
         <div className='mt-9 ml-5'>
           Already Have An Account? <Link to="/login" className="text-blue-800 hover:underline font-semibold text-1xl"> Login</Link>
         </div>

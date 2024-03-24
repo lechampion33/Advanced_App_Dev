@@ -5,8 +5,8 @@ import ContactI from '../assets/img/contact.jpg';
 import { useNavigate } from 'react-router-dom';
 
 function Contact() {
-  const [isSubmitted, setIsSubmitted] = useState(false); // State to track form submission
-  const navigate = useNavigate(); // Hook for navigation
+  const [isSubmitted, setIsSubmitted] = useState(false); 
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();

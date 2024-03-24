@@ -51,7 +51,7 @@ function AdminCourses() {
       setCourses(updatedCourses);
       closeUpdateModal();
     };
-  
+   
     return (
       <div className="flex flex-col w-screen">
         <h2 className="font-sans text-2xl font-bold p-8">Course List:</h2>

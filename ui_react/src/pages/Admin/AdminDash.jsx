@@ -55,6 +55,10 @@ function AdminDash() {
     setUsers(updatedUsers);
     closeUpdateModal();
   };
+  const deleteUser = (userId) => {
+    const updatedUsers = users.filter(user => user.id !== userId);
+    setUsers(updatedUsers);
+  };
 
   return (
     <div className="flex flex-col w-screen">
