@@ -1,17 +1,7 @@
 package com.coursecompass.courses.Configuration;
-import static org.springframework.http.HttpHeaders.AUTHORIZATION;
-import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
-import static org.springframework.http.HttpMethod.DELETE;
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.HEAD;
-import static org.springframework.http.HttpMethod.OPTIONS;
-import static org.springframework.http.HttpMethod.PATCH;
-import static org.springframework.http.HttpMethod.POST;
-import static org.springframework.http.HttpMethod.PUT;
-import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 import java.util.Arrays;
-
+import static com.coursecompass.courses.Enums.Role.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -26,6 +16,16 @@ import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
+import static org.springframework.http.HttpMethod.DELETE;
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.HEAD;
+import static org.springframework.http.HttpMethod.OPTIONS;
+import static org.springframework.http.HttpMethod.PATCH;
+import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
+import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 import lombok.RequiredArgsConstructor;
 
@@ -41,9 +41,10 @@ public class SecurityConfig {
 
         private static final String[] PublicEndPoints = {
                         "/api/auth/**",
-                        "/api/web/",
+                        "/api/web/sites",
                         "/swagger-ui/**",
-                        "/swagger-ui.html/",
+                        "/swagger-ui.html/**",
+                        "/api/admin/default",
                         "/v3/api-docs/**"
         };
 
@@ -53,8 +54,11 @@ public class SecurityConfig {
                                 .csrf(AbstractHttpConfigurer::disable)
                                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                                 .authorizeHttpRequests(
-                                                authorize -> authorize.requestMatchers(PublicEndPoints).permitAll().anyRequest().authenticated()
-                                                                      )
+                                                authorize -> authorize.requestMatchers(PublicEndPoints).permitAll()
+                                                .requestMatchers("/api/courses/postcourses","/api/courses/putcourses","api/courses/deletecourses","/users/**")
+                                                .hasRole(Admin.name())
+                                                .anyRequest()
+                                                .authenticated())
                                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                                 .authenticationProvider(authenticationProvider)
                                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

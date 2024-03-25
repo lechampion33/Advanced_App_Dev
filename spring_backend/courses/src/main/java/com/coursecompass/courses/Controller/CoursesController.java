@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 @RestController
-@RequestMapping("/api/web")
+@RequestMapping("/api/courses")
 public class CoursesController {
   @Autowired
   private CoursesServiceImpl csl;

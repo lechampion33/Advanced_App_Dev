@@ -7,4 +7,5 @@ import com.coursecompass.courses.dto.Response.LoginResponse;
 public interface AuthService {
     String register(RegisterRequest registerRequest);
     LoginResponse login(LoginRequest loginRequest);
+    String createAdmin();
 }
