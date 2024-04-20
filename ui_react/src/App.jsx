@@ -24,8 +24,10 @@ import AdminMails from './pages/Admin/AdminMails.jsx'
 import TermsLayout from './layouts/TermsLayout.jsx'
 import Terms from './pages/Terms.jsx'
 import Policy from './pages/Policy.jsx'
+import Enquiry from './pages/Enquiry.jsx'
 import Help from './pages/Help.jsx'
 import Explore from './pages/Explore.jsx'
+import EnquiryTable from './pages/EnquiryTable.jsx'
 import ExploreLayout from './layouts/ExploreLayout.jsx'
 import NotFound from './pages/NotFound.jsx'
 import './assets/css/App.css'
@@ -54,6 +56,8 @@ const App = () => {
        </Route>
        <Route element={<ExploreLayout/>}>
        <Route path='/explore' element={<Explore/>}/>
+       <Route path='/enquiry' element={<Enquiry/>}/>
+       <Route path='/enquirytable' element={<EnquiryTable/>}/>
        </Route>
        <Route element={<TermsLayout/>}>
        <Route path='/terms' element={<Terms/>}/>

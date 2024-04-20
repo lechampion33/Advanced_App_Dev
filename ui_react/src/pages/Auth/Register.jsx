@@ -2,27 +2,42 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { toast } from 'react-toastify';
+import axiosInstance from '../../components/Public/AxiosInstance'; // Import your Axios instance
 import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
-  const [fullName, setFullName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [agreed, setAgreed] = useState(false); 
+  const [agreed, setAgreed] = useState(false);
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!agreed) { 
+    if (!agreed) {
       toast.error('Please agree to the Privacy Policy.');
-    } else if (!fullName || !email || !password) {
+    } else if (!name || !email || !password) {
       toast.error('Please fill in all fields.');
     } else if (!email.includes('@gmail.com')) {
       toast.error('Please enter a valid Gmail address.');
     } else if (password.length < 8) {
       toast.error('Password must be at least 8 characters long.');
     } else {
-      toast.success('Registration successful!');
-      navigate('/login'); 
+      try {
+        const response = await axiosInstance.post('http://localhost:8080/api/auth/register', {
+          name,
+          email,
+          password,
+        });
+
+        const token = response.data.token;
+        localStorage.setItem('token', token); 
+        toast.success('Registration successful!');
+        console.log('User registered successfully:', response.data);
+        navigate('/login');
+      } catch (error) {
+        toast.error('Registration failed. Please try again.');
+      }
     }
   };
 
@@ -34,8 +49,8 @@ function Register() {
         <div className="relative w-full min-w-[300px] h-15 mt-5">
           <input
             type="text"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-1 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-gray-900"
             placeholder=" "
           />

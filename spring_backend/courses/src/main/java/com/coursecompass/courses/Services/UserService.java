@@ -2,6 +2,7 @@ package com.coursecompass.courses.Services;
 
 import java.util.List;
 
+import com.coursecompass.courses.model.Courses;
 import com.coursecompass.courses.model.User;
 
 public interface UserService {
@@ -11,7 +12,6 @@ public interface UserService {
 
     User getUserById(Long userId);
 
-    User updateUser(Long userId, User updatedUser);
-
-    boolean deleteUser(Long userId);
+    User putUsers(User user);
+    void deleteUser(long uid);
 }

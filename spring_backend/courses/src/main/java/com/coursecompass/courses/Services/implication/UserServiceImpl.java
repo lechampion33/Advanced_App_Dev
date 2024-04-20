@@ -36,27 +36,16 @@ public User getUserById(Long userId) {
     return userOptional.orElse(null);
 }
 
-@SuppressWarnings("null")
 @Override
-public User updateUser(Long userId, User updatedUser) {
-    Optional<User> userOptional = ur.findById(userId);
-    if (userOptional.isPresent()) {
-        updatedUser.setUid(userId); 
-        return ur.save(updatedUser);
-    } else {
-        return null; 
-    }
+public User putUsers(User user) {
+    return ur.save(user);
 }
 
-@SuppressWarnings("null")
 @Override
-public boolean deleteUser(Long userId) {
-    Optional<User> userOptional = ur.findById(userId);
-    if (userOptional.isPresent()) {
-        ur.deleteById(userId);
-        return true;
-    } else {
-        return false; 
-    }
+public void deleteUser(long uid) {
+    ur.deleteById(uid);
 }
+
+
+
 }

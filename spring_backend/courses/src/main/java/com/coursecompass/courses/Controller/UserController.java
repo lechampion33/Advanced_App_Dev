@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.coursecompass.courses.Services.implication.UserServiceImpl;
 import com.coursecompass.courses.model.User;
@@ -17,10 +18,7 @@ import com.coursecompass.courses.model.User;
 @RequestMapping("/users")
 public class UserController {
     @Autowired 
-   private final UserServiceImpl usi;
-   public UserController(UserServiceImpl usi) {
-        this.usi = usi;
-    }
+   private UserServiceImpl usi;
     @PostMapping
     public ResponseEntity<User> addUser(@RequestBody User newUser) {
         User createdUser = usi.addUser(newUser);
@@ -40,22 +38,14 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
-    @PutMapping("/{userId}")
-    public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
-        User user = usi.updateUser(userId, updatedUser);
-        if (user != null) {
-            return ResponseEntity.ok(user);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-    @DeleteMapping("/{userId}")
-    public ResponseEntity<String> deleteUser(@PathVariable Long userId) {
-        boolean deleted = usi.deleteUser(userId);
-        if (deleted) {
-            return ResponseEntity.ok("User deleted successfully");
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+     @PutMapping("/putUser")
+     public User putUser(@RequestParam long uid, @RequestBody User user) {
+      user.setUid(uid);
+      return usi.putUsers(user);
+  }
+  @DeleteMapping("/deleteUser")
+  public String deleteUser(@RequestParam long uid){
+    usi.deleteUser(uid);
+    return "Deleted Succesfully";
+  }
 }

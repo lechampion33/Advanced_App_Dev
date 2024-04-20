@@ -9,5 +9,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class LoginResponse {
     @Builder.Default
-    private String accessToken = "";
+    private String accessToken=" ";
 }

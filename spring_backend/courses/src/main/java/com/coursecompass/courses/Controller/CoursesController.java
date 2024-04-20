@@ -35,8 +35,9 @@ public class CoursesController {
       return csl.putCourses(cs);
   }
   @DeleteMapping("/deletecourses")
-  public void deleteCourses(@RequestParam long cid){
+  public String deleteCourses(@RequestParam long cid){
     csl.deleteCourses(cid);
+    return "Deleted Succesfully";
   }
   
 }
