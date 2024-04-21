@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import axiosInstance from '../components/Public/AxiosInstance';
 const SubmittedDataPage = () => {
   const formData = useLocation().state;
 

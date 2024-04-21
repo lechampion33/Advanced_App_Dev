@@ -31,6 +31,7 @@ import EnquiryTable from './pages/EnquiryTable.jsx'
 import ExploreLayout from './layouts/ExploreLayout.jsx'
 import NotFound from './pages/NotFound.jsx'
 import './assets/css/App.css'
+import Payment from './pages/Payment.jsx'
 const App = () => {
   const toastStyle = {
     background: '#333', 
@@ -57,6 +58,7 @@ const App = () => {
        <Route element={<ExploreLayout/>}>
        <Route path='/explore' element={<Explore/>}/>
        <Route path='/enquiry' element={<Enquiry/>}/>
+       <Route path='/payment' element={<Payment/>}/>
        <Route path='/enquirytable' element={<EnquiryTable/>}/>
        </Route>
        <Route element={<TermsLayout/>}>

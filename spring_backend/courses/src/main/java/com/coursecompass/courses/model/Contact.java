@@ -11,18 +11,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
-@Table(name="co_enquiress")
-public class Enquires {
+@AllArgsConstructor
+@Data
+@NoArgsConstructor
+@Table(name="co_contactss")
+public class Contact {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long eid;
-    private String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    private long coid; 
     private String email;
-    private String phone;
-    private String program;
-    private String inquiry;
+    private String subject;
+    private String message;
 }

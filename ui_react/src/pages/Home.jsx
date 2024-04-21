@@ -185,20 +185,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className='p-10 mt-3 bg-black flex flex-row'>
-        <div className='text-white font-serif'>
-          <h2 className='font-bold text-2xl'>Courses Offered</h2>
-          <p className='font-bold text-xl pl-10'>2000</p>
-        </div>
-        <div className=''>
-          <h2>Courses Offered</h2>
-          <p>2000</p>
-        </div>
-        <div className=''>
-          <h2>Courses Offered</h2>
-          <p>2000</p>
-        </div>
-      </div>
+     
       <div class='p-10 flex flex-row gap-4 w-[100%]'>
   <div class='w-[50%] '>
     <img className="pr-4 h-auto w-[80vh] max-h-80" src={ASK} alt='Image description'></img>

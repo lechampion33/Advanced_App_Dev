@@ -28,9 +28,9 @@ function Login() {
           password,
         });
 
-        const token = response.data.accessToken;
-        localStorage.setItem('token', token);
-        console.log('Login SuccessFullll');
+        const accessToken = response.data.accessToken;
+        localStorage.setItem('accessToken', accessToken);
+        console.log('Login SuccessFullll:',accessToken);
         navigate('/favs');
       } catch (error) {
         toast.error('Login failed. Please try again.');

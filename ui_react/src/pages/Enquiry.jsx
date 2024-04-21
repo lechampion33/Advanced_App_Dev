@@ -3,9 +3,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AiOutlineSend } from 'react-icons/ai'; // Importing the React Icon
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
-
+import axiosInstance from '../components/Public/AxiosInstance';
 const StudentInquiryForm = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,26 +18,30 @@ const StudentInquiryForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
   
-    // Check if all fields are filled
     const { name, email, phone, program, inquiry } = formData;
     if (!name || !email || !phone || !program || !inquiry) {
       toast.error('Please fill out all fields.');
       return;
     }
   
-    // Validation passed, proceed with form submission
-    console.log('Form Data:', formData);
-    toast.success('Form submitted successfully!', {
-      autoClose: 2000,
-      onClose: () => {
-        navigate('/enquirytable', { state: formData }); // Pass formData directly
-      }
-    });
+    try {
+      const response = await axiosInstance.post('http://localhost:8080/api/web/postenquires', formData);
+      console.log('Response from backend:', response.data);
+
+      toast.success('Form submitted successfully!', {
+        autoClose: 2000,
+        onClose: () => {
+          navigate('/enquirytable', { state: formData });
+        }
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error('An error occurred. Please try again later.');
+    }
   };
-  
 
   return (
     <div className="container mt-10">
