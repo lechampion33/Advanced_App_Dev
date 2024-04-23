@@ -4,9 +4,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AiOutlineSend } from 'react-icons/ai'; // Importing the React Icon
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import axiosInstance from '../components/Public/AxiosInstance';
+
 const StudentInquiryForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    eid: '', // Add eid field with an empty string as initial value
     name: '',
     email: '',
     phone: '',
@@ -21,8 +23,8 @@ const StudentInquiryForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    const { name, email, phone, program, inquiry } = formData;
-    if (!name || !email || !phone || !program || !inquiry) {
+    const { eid, name, email, phone, program, inquiry } = formData;
+    if (!eid || !name || !email || !phone || !program || !inquiry) {
       toast.error('Please fill out all fields.');
       return;
     }
@@ -51,6 +53,10 @@ const StudentInquiryForm = () => {
       </div>
       <ToastContainer />
       <form onSubmit={handleSubmit} className="w-[100vh] mx-auto bg-white p-10 rounded-lg shadow-2xl">
+        <div className="mb-4">
+          <label htmlFor="eid" className="block text-gray-700 font-bold mb-2">E.NO</label>
+          <input type="text" id="eid" name="eid" value={formData.eid} onChange={handleChange} className="border border-gray-300 rounded px-4 py-2 w-full" />
+        </div>
         <div className="mb-4">
           <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Name</label>
           <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="border border-gray-300 rounded px-4 py-2 w-full" />

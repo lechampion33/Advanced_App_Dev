@@ -1,9 +1,9 @@
 import React from 'react';
-import { AiOutlinePlayCircle, AiFillFire, AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
-import { AiOutlineArrowRight } from 'react-icons/ai'
+import { AiOutlinePlayCircle, AiFillFire, AiOutlineEye, AiOutlineShoppingCart } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import hom from '../assets/img/home3img.png';
 import IT from '../assets/img/IT.jpg';
+import { AiOutlineComment ,AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai';
 import AWS from '../assets/img/aws.jpg';
 import Cisco from '../assets/img/cisco.jpg';
 import Write from '../assets/img/write.jpg';
@@ -17,9 +17,40 @@ import P2 from '../assets/img/P2.jpg';
 import ASK from '../assets/img/ASK.jpg'
 import P3 from '../assets/img/P3.jpeg';
 import P4 from '../assets/img/P4.jpg';
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
+import axiosInstance from '../components/Public/AxiosInstance';
 function Home() {
+  const [feedbacks, setFeedbacks] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  useEffect(() => {
+    async function fetchFeedbacks() {
+      try {
+        const response = await axiosInstance.get('http://localhost:8080/api/feedback/getFeedback');
+        setFeedbacks(response.data);
+      } catch (error) {
+        console.error('Error fetching feedbacks:', error);
+      }
+    }
+
+    fetchFeedbacks();
+  }, []);
+  const totalPages = Math.ceil(feedbacks.length / 3);
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => (prevPage === totalPages ? 1 : prevPage + 1));
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => (prevPage === 1 ? totalPages : prevPage - 1));
+  };
   const navigate = useNavigate();
+  const handleViewClick = () => {
+    navigate('/view'); // Navigate to the desired view page
+  };
+
+  const handleCartClick = () => {
+    navigate('/payment'); // Navigate to the cart page
+  };
   const courses = [
     { id: 1, name: 'AI Fundamentals: From Basics to Advanced', image:AWS, instructor: 'John Doe', topic: 'Artificial Intelligence' },
     { id: 2, name: 'Machine Learning for Beginners', image:DS2, instructor: 'Jane Smith', topic: 'Artificial Intelligence' },
@@ -54,8 +85,6 @@ function Home() {
     navigate('/enquiry');
   };
  
-  const handleFavorite = (course) => {
-  };
   const [currentTopic, setCurrentTopic] = useState('Artificial Intelligence');
   
   const handleTabClick = (topic) => {
@@ -112,10 +141,11 @@ function Home() {
               <h2 className='font-sans pt-3 pl-3 font-bold text-xs'>{course.name}</h2>
               <p className='font-sans pt-2 pl-3 font-semibold text-xs text-slate-600'>By: {course.instructor}</p>
               <div className='flex flex-row pt-7'>
-                <button onClick={() => handleFavorite(course)} className='flex justify-center items-center px-4 font-mono mt-3 bg-black text-white w-[50%] h-[7vh]'>
-                  <AiOutlineHeart className="mr-2" /> Favs
-                </button>
-                <button className='flex justify-center items-center px-2 font-mono mt-3 bg-blue-800 text-white w-[50%] h-[7vh]'>
+              <button onClick={handleViewClick} className='flex justify-center items-center px-4 font-mono mt-3 bg-black text-white w-[50%] h-[7vh]'>
+             <AiOutlineEye className="mr-2 font-bold" />
+                View
+             </button>
+                <button onClick={handleCartClick} className='flex justify-center items-center px-2 font-mono mt-3 bg-blue-800 text-white w-[50%] h-[7vh]'>
                   <AiOutlineShoppingCart className="mr-2" /> Cart
                 </button>
               </div>
@@ -196,6 +226,28 @@ function Home() {
     <button onClick={handleQuery} class='bg-black hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded mt-4'>Discover More</button>
   </div>
 </div>
+<div className='p-10'>
+      <h2 className="text-2xl font-bold mb-4 flex items-center p-5">
+        <AiOutlineComment className="mr-2" />
+        These are our valuable feedbacks!
+      </h2>
+      <div className="grid grid-cols-3 gap-4 px-20 relative">
+        {feedbacks.slice((currentPage - 1) * 3, currentPage * 3).map((feedback, index) => (
+          <div key={index} className="bg-blue-800 w-[50vh] h-[30vh] rounded-lg shadow-md p-8 transform transition duration-300 hover:scale-105 hover:bg-black">
+            <p className="text-white mb-2 font-serif font-bold ">"{feedback.feedback}"</p>
+            <div className="flex justify-between pl-20 pt-5">
+              <p className="text-white">{feedback.username}, {feedback.country}</p>
+            </div>
+          </div>
+        ))}
+        {totalPages > 1 && (
+          <>
+            <button className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 bg-transparent border-2 border-gray-600 rounded-full p-2 text-3xl" style={{ marginLeft: '20px' }} onClick={handlePrevPage}><AiOutlineArrowLeft /></button>
+            <button className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 bg-transparent border-2 border-gray-600 rounded-full p-2 text-3xl" onClick={handleNextPage}><AiOutlineArrowRight /></button>
+          </>
+        )}
+      </div>
+    </div>
     </div>
   );
 }

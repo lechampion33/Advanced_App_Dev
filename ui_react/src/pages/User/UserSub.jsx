@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { AiOutlineCheck, AiOutlineCheckCircle, AiOutlineSelect } from 'react-icons/ai';
-
+import { useNavigate } from 'react-router-dom';
 function UserSub() {
   const [activePlan, setActivePlan] = useState(null);
-
+  const navigate=useNavigate();
   const handleChoosePlan = (plan) => {
     setActivePlan(plan);
+    navigate('/payment')
   };
 
   return (

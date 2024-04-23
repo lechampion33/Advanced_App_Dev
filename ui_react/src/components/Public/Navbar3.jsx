@@ -1,5 +1,5 @@
 import React from 'react'
-import { AiOutlineLogout, AiOutlineMail } from 'react-icons/ai'
+import { AiOutlineLogout, AiOutlineMail , AiOutlineMessage } from 'react-icons/ai'
 import { NavLink } from 'react-router-dom'
 
 function Navbar3() {
@@ -10,9 +10,11 @@ function Navbar3() {
         <NavLink to="/policy" className="flex items-center gap-2">
           <AiOutlineMail size={20} /> Policy
         </NavLink>
+        <NavLink to="/feedback" className="flex items-center gap-2"><AiOutlineMessage size={20}/>Feedback</NavLink>
         <NavLink to="/" className="flex items-center gap-2">
           <AiOutlineLogout size={20} /> Logout
         </NavLink>
+
       </div>
     </div>
   )

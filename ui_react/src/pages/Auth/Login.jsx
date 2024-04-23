@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineLogin } from 'react-icons/ai';
 import { toast } from 'react-toastify';
-import axiosInstance from '../../components/Public/AxiosInstance'; // Import your Axios instance
+import axiosInstance from '../../components/Public/AxiosInstance'; 
 import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
@@ -31,7 +31,13 @@ function Login() {
         const accessToken = response.data.accessToken;
         localStorage.setItem('accessToken', accessToken);
         console.log('Login SuccessFullll:',accessToken);
-        navigate('/favs');
+
+        // Determine the destination page based on user credentials
+        if (email === 'admin@gmail.com' && password === 'Admin@123') {
+          navigate('/board'); // Redirect to specific page for specific user
+        } else {
+          navigate('/userdash'); // Redirect to default page
+        }
       } catch (error) {
         toast.error('Login failed. Please try again.');
       }

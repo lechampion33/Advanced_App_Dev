@@ -97,8 +97,8 @@ function AdminCourses() {
   };
 
   return (
-    <div className="flex flex-col w-screen">
-      <h2 className="font-sans text-2xl font-bold p-8">Course List:</h2>
+    <div className="flex flex-col w-screen p-8">
+      <h2 className="font-sans text-2xl font-bold mb-8">Course List:</h2>
       <table className="border-collapse justify-center items-center ml-10 border w-[70%]">
         <thead>
           <tr>

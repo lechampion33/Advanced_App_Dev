@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { AiOutlineHeart, AiOutlineShoppingCart,AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineShoppingCart,AiOutlineSearch } from 'react-icons/ai';
+import {AiOutlineEye} from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 import AWS from '../assets/img/aws.jpg';
 import Cisco from '../assets/img/cisco.jpg';
 import IT from '../assets/img/IT.jpg';
@@ -47,6 +49,14 @@ const courses = [
 ];
 
 function Explore() {
+  const navigate = useNavigate();
+const handleViewClick = () => {
+  navigate('/view'); // Navigate to the desired view page
+};
+
+const handleCartClick = () => {
+  navigate('/payment'); // Navigate to the cart page
+};
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTopic, setSelectedTopic] = useState('All'); // Default to all topics
 
@@ -55,12 +65,6 @@ function Explore() {
     const topicMatch = selectedTopic === 'All' || course.topic === selectedTopic;
     return nameMatch && topicMatch;
   });
-
-  const handleFavorite = (course) => {
-    // Implement your favorite functionality here
-  };
-
-
   return (
     <div className='flex flex-col p-10'>
       <div className='container mx-auto bg-blue-800 rounded-lg p-14'>
@@ -111,12 +115,13 @@ function Explore() {
             <h2 className='font-sans pt-3 pl-3 font-bold text-xs'>{course.name}</h2>
             <p className='font-sans pt-2 pl-3 font-semibold text-xs text-slate-600'>By: {course.instructor}</p>
             <div className='flex flex-row pt-7'>
-              <button onClick={() => handleFavorite(course)} className='flex justify-center items-center px-4 font-mono mt-3 bg-black text-white w-[50%] h-[7vh]'>
-                <AiOutlineHeart className="mr-2" /> Favs
-              </button>
-              <button className='flex justify-center items-center px-2 font-mono mt-3 bg-blue-800 text-white w-[50%] h-[7vh]'>
-                <AiOutlineShoppingCart className="mr-2" /> Cart
-              </button>
+            <button onClick={handleViewClick} className='flex justify-center items-center px-4 font-mono mt-3 bg-black text-white w-[50%] h-[7vh]'>
+             <AiOutlineEye className="mr-2 font-bold" />
+                View
+             </button>
+                <button onClick={handleCartClick} className='flex justify-center items-center px-2 font-mono mt-3 bg-blue-800 text-white w-[50%] h-[7vh]'>
+                  <AiOutlineShoppingCart className="mr-2" /> Cart
+                </button>
             </div>
           </div>
         ))}

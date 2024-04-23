@@ -17,9 +17,9 @@ function AdminMails() {
     }
   };
 
-  const replyMail = (mailId) => {
-    // Implement your reply logic here
-    console.log('Replying to mail with ID:', mailId);
+  const replyMail = (mailId, recipientEmail) => {
+    const mailtoLink = `mailto:${recipientEmail}`;
+    window.location.href = mailtoLink;
   };
 
   return (
@@ -45,7 +45,7 @@ function AdminMails() {
               <td className="border p-1 flex flex-row gap-3 border-gray-600">
                 <button
                   className="bg-blue-800 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-                  onClick={() => replyMail(mail.coid)}
+                  onClick={() => replyMail(mail.coid, mail.email)}
                 >
                   Reply
                 </button>

@@ -1,5 +1,4 @@
 package com.coursecompass.courses.model;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,18 +10,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
-@Table(name="co_realenquiress")
-public class Enquires {
+@AllArgsConstructor
+@Data
+@NoArgsConstructor
+@Table(name="co_profile")
+public class Profile {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long eid;
-    private String name;
-    private String email;
-    private String phone;
-    private String program;
-    private String inquiry;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    private long pid;
+    private String username;
+    private String country;
+    private String mobile;
 }

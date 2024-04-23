@@ -8,12 +8,12 @@ import WebLayout from './layouts/WebLayout'
 import UserDash from './pages/User/UserDash.jsx'
 import Loader from './components/Public/Loader'
 import Forgot from './pages/Auth/Forgot'
+import Feedback from './pages/Feedback.jsx'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MainLayout from './layouts/MainLayout'
 import UserDashLayout from './layouts/UserLayout/UserDashLayout'
 import UserCourses from './pages/User/UserCourses.jsx'
-import UserFavs from './pages/User/UserFavs.jsx'
 import UserSub from './pages/User/UserSub.jsx'
 import AdminDashLayout from './layouts/AdminLayout/AdminDashLayout'
 import AdminDash from './pages/Admin/AdminDash.jsx'
@@ -32,6 +32,7 @@ import ExploreLayout from './layouts/ExploreLayout.jsx'
 import NotFound from './pages/NotFound.jsx'
 import './assets/css/App.css'
 import Payment from './pages/Payment.jsx'
+import View from './pages/View.jsx'
 const App = () => {
   const toastStyle = {
     background: '#333', 
@@ -58,19 +59,21 @@ const App = () => {
        <Route element={<ExploreLayout/>}>
        <Route path='/explore' element={<Explore/>}/>
        <Route path='/enquiry' element={<Enquiry/>}/>
+       <Route path='/feedback' element={<Feedback/>}/>
        <Route path='/payment' element={<Payment/>}/>
-       <Route path='/enquirytable' element={<EnquiryTable/>}/>
+       
        </Route>
        <Route element={<TermsLayout/>}>
        <Route path='/terms' element={<Terms/>}/>
        <Route path='/contact' element={<Contact/>}/>
+       <Route path='/view' element={<View/>}/>
        <Route path='/policy' element={<Policy/>}/>
        <Route path='/help' element={<Help/>}/>
        </Route>
        <Route element={<UserDashLayout/>}>
        <Route path='/userdash' element={<UserDash/>}/>
        <Route path='/usercourse' element={<UserCourses/>}/>
-       <Route path='/favs' element={<UserFavs/>}/>
+       <Route path='/enquirytable' element={<EnquiryTable/>}/>
        <Route path='/sub' element={<UserSub/>}/>
        </Route>
        <Route element={<AdminDashLayout/>}>
