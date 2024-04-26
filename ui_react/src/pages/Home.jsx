@@ -44,6 +44,11 @@ function Home() {
     setCurrentPage((prevPage) => (prevPage === 1 ? totalPages : prevPage - 1));
   };
   const navigate = useNavigate();
+  const handleButtonClick = () => {
+    // Navigate to another page
+    navigate('/explore');
+  };
+
   const handleViewClick = () => {
     navigate('/view'); // Navigate to the desired view page
   };
@@ -128,7 +133,7 @@ function Home() {
     <button className={`text-lg font-semibold border border-black rounded-full px-4 py-2 mr-2 ${currentTopic === 'Business' ? 'text-blue-800' : 'text-black'}`} onClick={() => handleTabClick('Business')}>Business</button>
   </div>
   <div className='mb-5'>
-  <button className='flex items-center text-lg font-semibold border border-black rounded-full px-4 py-2 mr-2 bg-blue-800 text-white'>
+  <button onClick={handleButtonClick} className='flex items-center text-lg font-semibold border border-black rounded-full px-4 py-2 mr-2 bg-blue-800 text-white'>
     View More <AiOutlineArrowRight className="ml-2" />
   </button>
 </div>

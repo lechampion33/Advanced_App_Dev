@@ -139,7 +139,7 @@ function AdminCourses() {
       <button className="bg-black mt-5 text-white font-bold py-5 px-6 rounded my-4 mx-10 w-[20%]" onClick={openAddModal}>Add Course</button>
 
       {showAddModal && (
-        <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-gray-800 bg-opacity-75">
+        <div className="fixed top-0 left-0 w-screen  h-screen flex items-center justify-center bg-gray-800 bg-opacity-75">
           <div className="bg-white p-8 rounded">
             <h2 className="text-2xl mb-4">Add Course</h2>
             <form>

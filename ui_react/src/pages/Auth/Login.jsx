@@ -27,16 +27,17 @@ function Login() {
           email,
           password,
         });
+        
 
         const accessToken = response.data.accessToken;
+        const role  = response.data.role;
         localStorage.setItem('accessToken', accessToken);
-        console.log('Login SuccessFullll:',accessToken);
+        localStorage.setItem('role', role);
 
-        // Determine the destination page based on user credentials
-        if (email === 'admin@gmail.com' && password === 'Admin@123') {
-          navigate('/board'); // Redirect to specific page for specific user
+        if (role === 'Admin') {
+          navigate('/board'); 
         } else {
-          navigate('/userdash'); // Redirect to default page
+          navigate('/userdash'); 
         }
       } catch (error) {
         toast.error('Login failed. Please try again.');
